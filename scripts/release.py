@@ -22,7 +22,8 @@ VERSION_FILE_PATH = "rasa/version.py"
 
 PYPROJECT_FILE_PATH = "pyproject.toml"
 
-REPO_BASE_URL = "https://github.com/RasaHQ/rasa"
+##REPO_BASE_URL = "https://github.com/RasaHQ/rasa"
+REPO_BASE_URL = "https://github.com/dialog-ai/rasa"
 
 RELEASE_BRANCH_PREFIX = "prepare-release-"
 

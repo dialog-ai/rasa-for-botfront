@@ -11,13 +11,14 @@ COPY . /build/
 WORKDIR /build
 
 # install dependencies
-RUN python -m venv /opt/venv && \
-  . /opt/venv/bin/activate && \
-  pip install --no-cache-dir -U 'pip<20' && \
-  poetry install --no-dev --no-root --no-interaction && \
-  poetry build -f wheel -n && \
-  pip install --no-deps dist/*.whl && \
-  rm -rf dist *.egg-info
+RUN python -m venv /opt/venv
+RUN . /opt/venv/bin/activate
+
+RUN pip install --no-cache-dir -U 'pip<20' 
+RUN poetry install --no-dev --no-root --no-interaction 
+RUN poetry build -f wheel -n
+RUN pip install --no-deps dist/*.whl
+RUN rm -rf dist *.egg-info
 
 # start a new build stage
 FROM ${IMAGE_BASE_NAME}:base-${BASE_IMAGE_HASH} as runner
